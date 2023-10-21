@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/style.css" type="text/css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Raleway:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&family=Shrikhand&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200;300;400;500;600;700;800&family=Raleway:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&family=Shrikhand&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/8f5705fdf5.js" crossorigin="anonymous"></script>
+  <title>Les petits plats</title>
+</head>
+<body>
+  <header>
+    <div id="logo" class="flex m-6 lg:m-16">
+      <h2 class="text-xs md:text-2xl lg:text-4xl text-white font-anton">LES PETITS PLATS</h2>
+      <img src="svg/cercle.svg" alt="Logo en forme de cercle" id="logo-circle">
+    </div>
+
+    <h1 class="slogan">
+      CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
+    </h1>
+
+    <nav id="search-bar">
+        <div id="search-input-container"> <input type="text" placeholder="Rechercher une recette, un ingrédient, ..." id="search-input">
+        <span id="magnifying-glass-container"><i class="fa-solid fa-magnifying-glass"></i></span>
+      </div>
+    </nav>
+  </header>
+
+  <nav id="filter-items">
+    <ul class="dropdown-list">
+      <li class="dropdown-menu">
+        <span class="dropdown-menu-title" onclick="toggleList('ingredients-list')"><a href="#">Ingrédients </a><i class="fa-solid fa-chevron-down"></i></span>
+        <ul id="ingredients-list" class="dropdown-menu-choices">
+          <li class="dropdown-search"> <input type="text"><i class="fa-solid fa-magnifying-glass"></i></li>
+          <li class="option option-1">Option 1</li>
+          <li class="option option-2">Option 2</li>
+          <li class="option option-3">Option 3</li>
+        </ul>
+      </li>
+
+      <li class="dropdown-menu">
+        <span class="dropdown-menu-title" onclick="toggleList('equipments-list')" ><a href="#">Appareils </a><i class="fa-solid fa-chevron-down"></i></span>
+        <ul id="equipments-list" class="dropdown-menu-choices">
+          <li class="dropdown-search"> <input type="text"> <i class="fa-solid fa-magnifying-glass"></i> </li>
+          <li class="option option-1">Option 1</li>
+          <li class="option option-2">Option 2</li>
+          <li class="option option-3">Option 3</li>
+        </ul>
+      </li>
+
+      <li class="dropdown-menu">
+        <span class="dropdown-menu-title" onclick="toggleList('utensils-list')"><a href="#">Ustensils </a><i class="fa-solid fa-chevron-down" ></i></span>
+        <ul id="utensils-list" class="dropdown-menu-choices">
+          <li class="dropdown-search"> <input type="text"> <i class="fa-solid fa-magnifying-glass"></i> </li>
+          <li class="option option-1">Option 1</li>
+          <li class="option option-2">Option 2</li>
+          <li class="option option-3">Option 3</li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="number-of-recipes">1500 recettes</h3>
+  </nav>
+
+  <main id="main">
+  </main>
+
+</body>
+<script src="js/script.js"></script>
+<script src="js/templates/dropdownMenu.js"></script>
+<script src="js/templates/cardTemplate.js"></script>
+<script src="js/templates/homepage.js"></script>
+</html>

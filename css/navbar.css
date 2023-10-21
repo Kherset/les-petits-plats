@@ -1,0 +1,163 @@
+#filter-items {
+  display: flex;
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-list {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 3%;
+  width: 70%;
+}
+
+.dropdown-menu {
+  background-color: var(--white);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  padding: 8px 5px;
+  position: relative;
+}
+
+.dropdown-menu a {
+  color: var(--black);
+  text-decoration: none;
+  width: 100%;
+}
+
+.dropdown-search {
+  border: solid lightgray 1px;
+  border-radius: 3px;
+  display: flex;
+  height: 20px;
+  margin: 5px auto 10px;
+  position: relative;
+  width: 90%;
+}
+
+.dropdown-search input{
+  border: none;
+  color: lightgray;
+  outline: none;
+  width: 70%;
+}
+
+.dropdown-search i {
+  color: lightgray;
+  font-size: 10px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.dropdown-menu-choices {
+  background-color: var(--white);
+  border-bottom-left-radius: 5px ;
+  border-bottom-right-radius: 5px ;
+  display: none;
+  left: 0;
+  list-style-type: none;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  z-index: 2;
+}
+
+.option{
+  font-size: 12px;
+  margin: 0 0 5px 5px;
+}
+
+#number-of-recipes {
+  color: var(--black);
+  font-family: 'Anton', sans-serif;
+  font-size: 14px;
+  position: absolute;
+  right: 5%;
+  top: 5px;
+}
+
+
+/***** Medias Query *****/
+
+@media screen and (min-width: 768px) {
+  #filter-items {
+    margin-top: 20px;
+  }
+
+  .dropdown-list {
+    width: 75%;
+  }
+
+  .dropdown-menu {
+    font-size: 24px;
+    padding: 10px 10px;
+  }
+
+  .dropdown-search i {
+    font-size: 16px;
+    top: 2px;
+  }
+
+  .dropdown-menu-title a {
+    margin-right: 30px;
+  }
+
+  .dropdown-menu-choices {
+    top: 40px;
+  }
+
+  .option{
+    font-size: 16px;
+    margin: 0 0 5px 10px;
+  }
+
+  #number-of-recipes {
+    font-size: 20px;
+    top: 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #filter-items {
+    margin-top: 30px;
+  }
+
+  .dropdown-list {
+    width: 70%;
+  }
+
+  .dropdown-menu {
+    font-size: 26px;
+    padding: 15px 15px;
+  }
+
+  .dropdown-search {
+    height: 30px;
+  }
+
+  .dropdown-search i {
+    font-size: 24px;
+    top: 3px;
+  }
+
+  .dropdown-menu-title a {
+    margin-right: 50px;
+  }
+
+  .dropdown-menu-choices {
+    top: 50px;
+  }
+
+  .option{
+    font-size: 24px;
+    margin: 0 0 10px 15px;
+  }
+
+  #number-of-recipes {
+    font-size: 26px;
+  }
+}

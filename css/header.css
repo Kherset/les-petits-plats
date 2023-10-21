@@ -1,0 +1,154 @@
+/***** Logo *****/
+    header {
+      background: url('../images/header.jpg') center/cover no-repeat;
+      height: 300px;
+      width: 100%;
+    }
+
+    #logo {
+      color: var(--white);
+      display: flex;
+      font-family: 'Anton', 'sans-serif';
+      letter-spacing: 0.5px;
+      padding: 20px;
+    }
+
+    #logo-circle {
+      height: 10px;
+      margin: 9px 0 0 2px;
+      width: 10px;
+    }
+
+/***** Slogan *****/
+    .slogan {
+      color: var(--yellow);
+      font-family: 'Anton', sans-serif;
+      font-size: 17px;
+      height: 60px;
+      margin: 50px 15% 10px;
+      text-align: center;
+      width: 70%;
+    }
+
+    /***** Nav - Search Bar *****/
+    #search-bar {
+      height: 26px;
+      width: 100%;
+    }
+
+    #search-input-container {
+      background-color: var(--white);
+      border-radius: 5px;
+      margin: 0 10%;
+      position: relative;
+      width: 80%;
+    }
+
+    #search-input {
+      border: none;
+      height: 26px;
+      margin-left: 10px;
+      width: 80%;
+    }
+
+    #search-input:focus {
+      outline: none;
+    }
+
+    #magnifying-glass-container {
+      align-items: center;
+      background-color: var(--black);
+      border-radius: 5px;
+      color: var(--white);
+      display: flex;
+      height: 20px;
+      justify-content: center;
+      right: 5px;
+      position: absolute;
+      top: 4px;
+      width: 20px;
+    }
+
+    #magnifying-glass-container:hover {
+      background-color: var(--yellow);
+      color: var(--black);
+    }
+
+    #magnifying-glass-container i{
+      font-size: 12px;
+    }
+
+
+/***** Medias Query *****/
+
+@media screen and (min-width: 768px) {
+  header {
+    height: 500px;
+  }
+
+  #logo {
+    font-size: 24px;
+    padding: 40px;
+  }
+
+  #logo-circle {
+    height: 15px;
+    margin: 13px 0 0 5px;
+    width: 15px;
+  }
+
+  .slogan {
+    font-size: 35px;
+    height: 120px;
+    margin: 50px 15% 20px;
+  }
+
+  #search-input {
+    height: 36px;
+  }
+
+  #magnifying-glass-container {
+    height: 30px;
+    width: 30px;
+  }
+
+  #magnifying-glass-container i{
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  header {
+    height: 600px;
+  }
+
+  #logo {
+    font-size: 32px;
+    padding: 50px;
+  }
+
+  #logo-circle {
+    height: 20px;
+    margin: 18px 0 0 8px;
+    width: 20px;
+  }
+
+  .slogan {
+    font-size: 46px;
+    height: 140px;
+    margin: 50px 15% 20px;
+  }
+
+  #search-input {
+    height: 42px;
+  }
+
+  #magnifying-glass-container {
+    height: 36px;
+    width: 36px;
+  }
+
+  #magnifying-glass-container i{
+    font-size: 20px;
+  }
+}

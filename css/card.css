@@ -1,0 +1,125 @@
+/***** Global *****/
+  .card {
+    background-color: var(--white);
+    border-radius: 20px;
+    height: 550px;
+    width: 100%;
+  }
+
+/***** Card Image *****/
+  .card-duration {
+    align-items: center;
+    background-color: var(--yellow);
+    border-radius: 20px;
+    display: flex;
+    font-size: 14px;
+    font-weight: 100;
+    height: 30px;
+    justify-content: center;
+    padding: 0 8px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 15%;
+  }
+
+  .img-container{
+    position: relative;
+    height: 40%;
+    width: 100%;
+  }
+
+  .card-img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 100%;
+    width: 100%;
+  }
+
+  /***** Card Content *****/
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    margin-left: 5%;
+    width: 90%;
+  }
+
+  .recipe-title{
+    font-family: 'Anton', 'sans-serif';
+    font-size: 24px;
+    margin-top: 10px;
+  }
+
+  .recipe-label, .ingredients-label{
+    color: lightgray;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .recipe{
+    font-size: 14px;
+    margin-top: 5px;
+    height: 30%;
+    overflow: scroll;
+    scrollbar-width: none; /* scrollbar invisible for Chrome et Safari */
+  }
+
+  .recipe::-webkit-scrollbar {
+    display: none; /* scrollbar invisible for Chrome et Safari */
+  }
+
+
+  .ingredients-and-quantity-container{
+    display: grid;
+    gap: 0px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    height: auto;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .ingredient{
+    font-size: 14px;
+  }
+
+  .quantity{
+    color: lightgray;
+    font-size: 14px;
+  }
+
+/***** Medias Query *****/
+
+@media screen and (min-width: 768px) {
+  .card {
+    height: 720px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    height: 800px;
+  }
+
+  .recipe-title{
+    font-family: 'Anton', 'sans-serif';
+    font-size: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+  }
+
+  .recipe-label, .ingredients-label {
+    font-size: 22px;
+  }
+
+  .ingredient, .quantity, .recipe {
+    font-size: 18px;
+  }
+  .quantity{
+    margin-bottom: 10px;
+  }
+}
