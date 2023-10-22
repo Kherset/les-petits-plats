@@ -1,14 +1,12 @@
 // Function to build the card template
-function cardTemplate(recipe) {
-  const { id, image, name, servings, ingredients, time, description, appliance } = recipe;
+  function cardTemplate(data) {
+    const { id, image, name, servings, ingredients, time, description, appliance } = data;
 
-  function getCardDOM() {
     // Create new recipe card
       const card = document.createElement('article');
       card.setAttribute('class', 'card');
 
     // Image part of the card
-
       const imgContainer = document.createElement('figure');
       imgContainer.setAttribute('class', 'img-container');
 
@@ -22,7 +20,6 @@ function cardTemplate(recipe) {
       cardImage.setAttribute('alt', 'Image de la recette')
 
     // Text part of the card
-
       const textContent = document.createElement('section');
       textContent.setAttribute('class', 'text-content');
 
@@ -43,7 +40,6 @@ function cardTemplate(recipe) {
       ingredientsLabel.innerText = 'Ingredients'
 
     // Ingredients part
-
       const ingredientsAndQuantityContainer = document.createElement('section');
       ingredientsAndQuantityContainer.setAttribute('class', 'ingredients-and-quantity-container');
 
@@ -92,5 +88,3 @@ function cardTemplate(recipe) {
 
     return card
   }
-  return { getCardDOM };
-}

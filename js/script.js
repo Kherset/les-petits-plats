@@ -29,14 +29,19 @@ async function fetchUstensils() {
   return datas.map(data => data.ustensils); // Extract and return the utensils from each recipe
 }
 
+async function fetchRecipesNames() {
+  const datas = await fetchDataFromJSON("../datas/recipes.json"); // Use the generic function to fetch recipe data
+  console.log(datas.map(data => data.name))
+  return datas.map(data => data.name); // Extract and return the utensils from each recipe
+}
+
 
 async function displayData(recipes) {
 	const cardsSection = document.querySelector("main");
 
 	recipes.forEach((recipe) => {
 		const recipeModel = cardTemplate(recipe);
-		const userCardDOM = recipeModel.getCardDOM();
-		cardsSection.appendChild(userCardDOM);
+		cardsSection.appendChild(recipeModel);
 	});
 }
 
