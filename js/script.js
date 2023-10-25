@@ -15,25 +15,9 @@ async function fetchDataFromJSON(url) {
 
 // Function to fetch recipe data from a JSON file
 async function fetchRecipes() {
-  return await fetchDataFromJSON("../datas/recipes.json"); // Use the generic function to fetch and return recipe data
+  return await fetchDataFromJSON("../datas/recipes.json");
 }
 
-// Function to fetch ingredient data from a JSON file
-async function fetchIngredients() {
-  const datas = await fetchDataFromJSON("../datas/recipes.json"); // Use the generic function to fetch recipe data
-  return datas.map(data => data.ingredients); // Extract and return the ingredients from each recipe
-}
-// Function to fetch utensil data from a JSON file
-async function fetchUstensils() {
-  const datas = await fetchDataFromJSON("../datas/recipes.json"); // Use the generic function to fetch recipe data
-  return datas.map(data => data.ustensils); // Extract and return the utensils from each recipe
-}
-
-async function fetchRecipesNames() {
-  const datas = await fetchDataFromJSON("../datas/recipes.json"); // Use the generic function to fetch recipe data
-  console.log(datas.map(data => data.name))
-  return datas.map(data => data.name); // Extract and return the utensils from each recipe
-}
 
 
 async function displayData(recipes) {
@@ -46,12 +30,16 @@ async function displayData(recipes) {
 }
 
 async function init() {
+  const numberOfRecipes = document.getElementById('number-of-recipes');
 	try {
 		const recipes = await fetchRecipes();
 		displayData(recipes);
+    numberOfRecipes.innerText = `${recipes.length} recettes`
+
 	} catch (error) {
 		console.error(error);
 	}
+  searchRecipe()
 }
 
 init();

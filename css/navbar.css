@@ -68,7 +68,12 @@
 
 .option{
   font-size: 12px;
-  margin: 0 0 5px 5px;
+  padding: 3px 0 3px 5px;
+
+}
+
+.option:hover, .option:focus {
+  background-color: var(--yellow);
 }
 
 #number-of-recipes {
@@ -79,7 +84,6 @@
   right: 5%;
   top: 5px;
 }
-
 
 /***** Medias Query *****/
 
@@ -112,7 +116,7 @@
 
   .option{
     font-size: 16px;
-    margin: 0 0 5px 10px;
+    padding: 6px 0 6px 10px;
   }
 
   #number-of-recipes {
@@ -154,7 +158,7 @@
 
   .option{
     font-size: 24px;
-    margin: 0 0 10px 15px;
+    padding: 9px 0 9px 15px;
   }
 
   #number-of-recipes {

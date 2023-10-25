@@ -1,35 +1,75 @@
-const searchInput = document.getElementById('searchInput');
+const searchInput = document.getElementById('search-input');
 const resultsList = document.getElementById('main');
+const numberOfRecipes = document.getElementById('number-of-recipes');
 
+
+let recipes
 
 // Fonction pour effectuer la recherche
-function performSearch() {
-  const searchTerm = searchInput.value.toLowerCase();
-
-  resultsList.innerHTML = '';
-
-  // Filtrez les données en fonction de la recherche
-  const filteredData = data.filter(item => item.toLowerCase().includes(searchTerm));
-
-  // Affichez les résultats dans la liste
-  filteredData.forEach(item => {
-      const listItem = document.createElement('li');
-      listItem.textContent = item;
-      resultsList.appendChild(listItem);
-  });
+async function searchRecipe() {
+  recipes = await fetchRecipes();
+  // dataArray = orderList(recipes);
+  createResearchList(recipes);
 }
 
-// Attachez un gestionnaire d'événement à la barre de recherche pour déclencher la recherche lors de la frappe
-searchInput.addEventListener('input', performSearch);
-
-performSearch()
-
-
-// async function searchBar() {
-//   const recipesNames = await fetchRecipesNames()
-//   const result = recipesNames.filter(function (element) {
-//     return element % 2 === 0;
-//   });
+// function orderList(data) {
+//   const orderedData = data.sort((a,b) => {
+//     if (a.name.toLowerCase() < b.name.toLowerCase()) {
+//       return -1
+//     }
+//     if (a.name.toLowerCase() > b.name.toLowerCase()) {
+//       return 1
+//     }
+//     return 0;
+//   })
+//   return orderedData
 // }
 
-// searchBar();
+function createResearchList(recipes) {
+
+  recipes.forEach(recipe => {
+    let recipeCard = cardTemplate(recipe)
+    resultsList.appendChild(recipeCard)
+  });
+
+}
+
+
+searchInput.addEventListener('input', filterData);
+
+function filterData(e) {
+  resultsList.innerHTML = '';
+
+  const searchedName = e.target.value.toLowerCase();
+
+  if (searchedName.length >= 3) {
+    const filteredData = recipes.filter(element => element.name.toLowerCase().includes(searchedName)
+                                       || element.description.toLowerCase().includes(searchedName)
+                                       || element.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchedName)))
+    if (filteredData.length === 1) {
+    numberOfRecipes.innerText = `${filteredData.length} recette`;
+    createResearchList(filteredData);
+    } else {
+      numberOfRecipes.innerText = `${filteredData.length} recettes`;
+      createResearchList(filteredData);
+    }
+
+  } else {
+    numberOfRecipes.innerText = `${recipes.length} recettes`;
+    createResearchList(recipes);
+  }
+}
+
+
+// async function fetchIngredients(searchedName) {
+//   const datas = await fetchRecipes()
+//   datas.forEach(data => {
+//     let ingredients = data.ingredients
+//     ingredients.forEach(ingredient => {
+//       console.log(ingredient.ingredient)
+//     });
+//   });
+
+// }
+
+// fetchIngredients()

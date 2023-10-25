@@ -34,6 +34,7 @@
     border-top-right-radius: 20px;
     height: 100%;
     width: 100%;
+    object-fit: cover;
   }
 
   /***** Card Content *****/
@@ -107,9 +108,7 @@
     font-family: 'Anton', 'sans-serif';
     font-size: 20px;
     margin-top: 10px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis
+    height: 60px;
   }
 
   .recipe-label, .ingredients-label {
