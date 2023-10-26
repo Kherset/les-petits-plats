@@ -7,9 +7,8 @@
 
 .dropdown-list {
   display: flex;
-  justify-content: space-around;
-  margin-left: 3%;
-  width: 70%;
+  margin-left: 5%;
+  width: 75%;
 }
 
 .dropdown-menu {
@@ -17,7 +16,8 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  font-size: 12px;
+  font-size: 11px;
+  margin-right: 5%;
   padding: 8px 5px;
   position: relative;
 }
@@ -60,10 +60,16 @@
   display: none;
   left: 0;
   list-style-type: none;
+  max-height: 150px;
+  overflow: scroll;
   position: absolute;
   top: 30px;
   width: 100%;
   z-index: 2;
+}
+
+.dropdown-menu-choices::-webkit-scrollbar {
+  display: none;
 }
 
 .option{
@@ -79,7 +85,7 @@
 #number-of-recipes {
   color: var(--black);
   font-family: 'Anton', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   position: absolute;
   right: 5%;
   top: 5px;
@@ -97,7 +103,7 @@
   }
 
   .dropdown-menu {
-    font-size: 24px;
+    font-size: 20px;
     padding: 10px 10px;
   }
 
@@ -135,7 +141,7 @@
   }
 
   .dropdown-menu {
-    font-size: 26px;
+    font-size: 22px;
     padding: 15px 15px;
   }
 
@@ -154,7 +160,10 @@
 
   .dropdown-menu-choices {
     top: 50px;
+    max-height: 300px;
   }
+
+
 
   .option{
     font-size: 24px;
