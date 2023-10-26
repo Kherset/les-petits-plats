@@ -64,7 +64,6 @@
     margin-top: 5px;
     height: 30%;
     overflow: scroll;
-    scrollbar-width: none; /* scrollbar invisible for Chrome et Safari */
   }
 
   .recipe::-webkit-scrollbar {
