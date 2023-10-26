@@ -15,7 +15,7 @@ async function fetchDataFromJSON(url) {
 
 // Function to fetch recipe data from a JSON file
 async function fetchRecipes() {
-  return await fetchDataFromJSON("../datas/recipes.json");
+  return await fetchDataFromJSON("datas/recipes.json");
 }
 
 
