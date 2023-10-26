@@ -15,7 +15,7 @@
       cardDuration.innerText = `${time} min`
 
       const cardImage = document.createElement('img');
-      cardImage.src = `../images/recipes/${image}`
+      cardImage.src = `images/recipes/${image}`
       cardImage.setAttribute('class', 'card-img')
       cardImage.setAttribute('alt', 'Image de la recette')
 
