@@ -1,75 +1,59 @@
+// Get references to HTML elements
 const searchInput = document.getElementById('search-input');
 const resultsList = document.getElementById('main');
 const numberOfRecipes = document.getElementById('number-of-recipes');
 
+let recipes;
 
-let recipes
-
-// Fonction pour effectuer la recherche
+// Function to perform the search
 async function searchRecipe() {
   recipes = await fetchRecipes();
-  // dataArray = orderList(recipes);
   createResearchList(recipes);
 }
 
-// function orderList(data) {
-//   const orderedData = data.sort((a,b) => {
-//     if (a.name.toLowerCase() < b.name.toLowerCase()) {
-//       return -1
-//     }
-//     if (a.name.toLowerCase() > b.name.toLowerCase()) {
-//       return 1
-//     }
-//     return 0;
-//   })
-//   return orderedData
-// }
-
+// Create a list of recipes based on the data
 function createResearchList(recipes) {
-
   recipes.forEach(recipe => {
-    let recipeCard = cardTemplate(recipe)
-    resultsList.appendChild(recipeCard)
+    let recipeCard = cardTemplate(recipe);
+    resultsList.appendChild(recipeCard);
   });
-
 }
 
-
+// Add an event listener to the search input for filtering data
 searchInput.addEventListener('input', filterData);
 
+// Filter the data based on user input
 function filterData(e) {
   resultsList.innerHTML = '';
 
   const searchedName = e.target.value.toLowerCase();
 
   if (searchedName.length >= 3) {
-    const filteredData = recipes.filter(element => element.name.toLowerCase().includes(searchedName)
-                                       || element.description.toLowerCase().includes(searchedName)
-                                       || element.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchedName)))
-    if (filteredData.length === 1) {
-    numberOfRecipes.innerText = `${filteredData.length} recette`;
-    createResearchList(filteredData);
-    } else {
-      numberOfRecipes.innerText = `${filteredData.length} recettes`;
-      createResearchList(filteredData);
-    }
-
+    let filteredData = searchInsideRecipes(recipes, searchedName);
+    displayNumberOfRecipes(filteredData);
   } else {
-    numberOfRecipes.innerText = `${recipes.length} recettes`;
+    numberOfRecipes.innerText = `${recipes.length} recipes`;
     createResearchList(recipes);
   }
 }
 
+// Search for keywords inside recipes
+function searchInsideRecipes(dataBase, dataResearched) {
+  const filteredData = dataBase.filter(element =>
+    element.name.toLowerCase().includes(dataResearched) ||
+    element.description.toLowerCase().includes(dataResearched) ||
+    element.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(dataResearched))
+  );
+  return filteredData;
+}
 
-// async function fetchIngredients(searchedName) {
-//   const datas = await fetchRecipes()
-//   datas.forEach(data => {
-//     let ingredients = data.ingredients
-//     ingredients.forEach(ingredient => {
-//       console.log(ingredient.ingredient)
-//     });
-//   });
-
-// }
-
-// fetchIngredients()
+// Display the number of recipes and update the list
+function displayNumberOfRecipes(filteredData) {
+  if (filteredData.length === 1) {
+    numberOfRecipes.innerText = `${filteredData.length} recipe`;
+    createResearchList(filteredData);
+  } else {
+    numberOfRecipes.innerText = `${filteredData.length} recipes`;
+    createResearchList(filteredData);
+  }
+}
