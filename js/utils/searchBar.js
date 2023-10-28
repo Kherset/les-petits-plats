@@ -32,7 +32,7 @@ function filterData(e) {
     let filteredData = searchInsideRecipes(recipes, searchedName);
     displayNumberOfRecipes(filteredData);
   } else {
-    numberOfRecipes.innerText = `${recipes.length} recipes`;
+    numberOfRecipes.innerText = `${recipes.length} recettes`;
     createResearchList(recipes);
   }
 }
@@ -50,10 +50,10 @@ function searchInsideRecipes(dataBase, dataResearched) {
 // Display the number of recipes and update the list
 function displayNumberOfRecipes(filteredData) {
   if (filteredData.length === 1) {
-    numberOfRecipes.innerText = `${filteredData.length} recipe`;
+    numberOfRecipes.innerText = `${filteredData.length} recette`;
     createResearchList(filteredData);
   } else {
-    numberOfRecipes.innerText = `${filteredData.length} recipes`;
+    numberOfRecipes.innerText = `${filteredData.length} recettes`;
     createResearchList(filteredData);
   }
 }
