@@ -171,8 +171,8 @@ async function filterDataByTags(tag) {
 // Display the number of recipes based on filters
 function displayNumberOfRecipesFilteredByTags(filteredData) {
   if (filteredData.length === 1) {
-    numberOfRecipes.innerText = `${filteredData.length} recipe`;
+    numberOfRecipes.innerText = `${filteredData.length} recette`;
   } else {
-    numberOfRecipes.innerText = `${filteredData.length} recipes`;
+    numberOfRecipes.innerText = `${filteredData.length} recettes`;
   }
 }

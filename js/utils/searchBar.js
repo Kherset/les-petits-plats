@@ -56,11 +56,12 @@ function searchInsideRecipes(dataBase, dataResearched) {
 
 // Display the number of recipes and update the list
 function displayNumberOfRecipes(filteredData) {
-  const numRecipes = filteredData.length;
-  if (numRecipes === 1) {
-    numberOfRecipes.innerText = `${numRecipes} recette`;
+  if (filteredData.length === 1) {
+    numberOfRecipes.innerText = `${filteredData.length} recette`;
+    createResearchList(filteredData);
   } else {
-    numberOfRecipes.innerText = `${numRecipes} recettes`;
+    numberOfRecipes.innerText = `${filteredData.length} recettes`;
+    createResearchList(filteredData);
   }
   createResearchList(filteredData);
 }

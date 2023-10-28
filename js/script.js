@@ -30,7 +30,7 @@ async function init() {
   try {
     const recipes = await fetchRecipes(); // Fetch recipe data
     displayData(recipes); // Display the fetched recipes on the webpage
-    numberOfRecipes.innerText = `${recipes.length} recipes`; // Update the number of recipes displayed
+    numberOfRecipes.innerText = `${recipes.length} recettes`; // Update the number of recipes displayed
 
   } catch (error) {
     console.error(error); // Log any errors that occur during initialization
