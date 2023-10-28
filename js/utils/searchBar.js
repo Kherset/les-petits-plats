@@ -13,11 +13,10 @@ async function searchRecipe() {
 
 // Create a list of recipes based on the data
 function createResearchList(recipes) {
-  for (let i = 0; i < recipes.length; i++) {
-    const recipe = recipes[i];
+  recipes.forEach(recipe => {
     let recipeCard = cardTemplate(recipe);
     resultsList.appendChild(recipeCard);
-  }
+  });
 }
 
 // Add an event listener to the search input for filtering data
@@ -40,27 +39,21 @@ function filterData(e) {
 
 // Search for keywords inside recipes
 function searchInsideRecipes(dataBase, dataResearched) {
-  const filteredData = [];
-  for (let i = 0; i < dataBase.length; i++) {
-    const element = dataBase[i];
-    if (
-      element.name.toLowerCase().includes(dataResearched) ||
-      element.description.toLowerCase().includes(dataResearched) ||
-      element.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(dataResearched))
-    ) {
-      filteredData.push(element);
-    }
-  }
+  const filteredData = dataBase.filter(element =>
+    element.name.toLowerCase().includes(dataResearched) ||
+    element.description.toLowerCase().includes(dataResearched) ||
+    element.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(dataResearched))
+  );
   return filteredData;
 }
 
 // Display the number of recipes and update the list
 function displayNumberOfRecipes(filteredData) {
-  const numRecipes = filteredData.length;
-  if (numRecipes === 1) {
-    numberOfRecipes.innerText = `${numRecipes} recette`;
+  if (filteredData.length === 1) {
+    numberOfRecipes.innerText = `${filteredData.length} recette`;
+    createResearchList(filteredData);
   } else {
-    numberOfRecipes.innerText = `${numRecipes} recettes`;
+    numberOfRecipes.innerText = `${filteredData.length} recettes`;
+    createResearchList(filteredData);
   }
-  createResearchList(filteredData);
 }
