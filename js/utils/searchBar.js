@@ -4,11 +4,14 @@ const resultsList = document.getElementById('main');
 const numberOfRecipes = document.getElementById('number-of-recipes');
 
 let recipes;
+let filteredData = [];
+let searchedName = '';
 
 // Function to perform the search
 async function searchRecipe() {
   recipes = await fetchRecipes();
-  createResearchList(recipes);
+  filteredData = [...recipes]
+  createResearchList(filteredData);
 }
 
 // Create a list of recipes based on the data
@@ -26,25 +29,30 @@ searchInput.addEventListener('input', filterData);
 function filterData(e) {
   resultsList.innerHTML = '';
 
-  const searchedName = e.target.value.toLowerCase();
+  searchedName = e.target.value.toLowerCase();
 
   if (searchedName.length >= 3) {
-    let filteredData = searchInsideRecipes(recipes, searchedName);
+    filteredData = searchInsideRecipes(searchedName);
     displayNumberOfRecipes(filteredData);
   } else {
     numberOfRecipes.innerText = `${recipes.length} recettes`;
     createResearchList(recipes);
+    filteredData = [...recipes];
+  }
+
+  if (selectedTags.length > 0) {
+    filterDataByTags();
   }
 }
 
 // Search for keywords inside recipes
-function searchInsideRecipes(dataBase, dataResearched) {
-  const filteredData = dataBase.filter(element =>
+function searchInsideRecipes(dataResearched) {
+    const filteredData_ = filteredData.filter(element =>
     element.name.toLowerCase().includes(dataResearched) ||
     element.description.toLowerCase().includes(dataResearched) ||
     element.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(dataResearched))
   );
-  return filteredData;
+  return filteredData_;
 }
 
 // Display the number of recipes and update the list

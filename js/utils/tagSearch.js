@@ -6,7 +6,9 @@ const utensilsArray = new Set(); // Stores unique utensils
 const dropdownIngredients = document.getElementById('ingredients-list');
 const dropdownAppliances = document.getElementById('appliances-list');
 const dropdownUtensils = document.getElementById('utensils-list');
+
 let isInitialSearch = true; // Flag for initial search
+let selectedTags = []; // Array to store selected tags
 
 // Fetch and process ingredients
 async function fetchIngredients() {
@@ -22,6 +24,7 @@ async function fetchIngredients() {
 }
 
 // Fetch and process appliances
+// Fetch and process appliances
 async function fetchAppliances() {
   recipes = await fetchRecipes();
   recipes.forEach(recipe => {
@@ -30,6 +33,7 @@ async function fetchAppliances() {
   });
   return appliancesArray;
 }
+
 
 // Fetch and process utensils
 async function fetchUtensils() {
@@ -44,6 +48,10 @@ async function fetchUtensils() {
   return utensilsArray;
 }
 
+function sortArrayAlphabetically(array) {
+  return array.sort((a, b) => a.localeCompare(b, 'fr'));
+}
+
 // Add tags for ingredients, appliances, and utensils
 async function addTags() {
   let ingredients = Array.from(await fetchIngredients());
@@ -51,9 +59,9 @@ async function addTags() {
   let utensils = Array.from(await fetchUtensils());
 
   // Sort the arrays alphabetically
-  ingredients.sort((a, b) => a.localeCompare(b, 'fr'));
-  appliances.sort((a, b) => a.localeCompare(b, 'fr'));
-  utensils.sort((a, b) => a.localeCompare(b, 'fr'));
+  sortArrayAlphabetically(ingredients);
+  sortArrayAlphabetically(appliances);
+  sortArrayAlphabetically(utensils);
 
   // Create and add tags to the respective dropdowns
   ingredients.forEach(ingredient => {
@@ -114,10 +122,13 @@ async function displayTag() {
       filterDataByTags(tagContent.outerText);
     });
   });
+  researchTag('ingredients-list', 'ingredients-input');
+  researchTag('appliances-list', 'appliances-input');
+  researchTag('utensils-list', 'utensils-input');
 }
 
 // Handle removal of tags
-async function removeTag(tag, tagContainer) {
+function removeTag(tag, tagContainer) {
   const cross = tagContainer.querySelector('.cross-tag');
 
   cross.addEventListener('click', () => {
@@ -135,25 +146,30 @@ async function removeTag(tag, tagContainer) {
 
 displayTag();
 
-let selectedTags = []; // Array to store selected tags
-
 // Filter recipes based on selected tags
-async function filterDataByTags(tag) {
-  let dataBase = await fetchRecipes();
+function filterDataByTags(tag) {
+  // let dataBase = await fetchRecipes();
+
   let main = document.getElementById('main');
 
+  if (!tag) {
+    filteredData = [...recipes];
+  }
+
+  if (searchedName.length > 2) {
+    filteredData = searchInsideRecipes(searchedName);
+  }
+
   // Check if the tag has already been selected and add or remove it accordingly
-  if (tag) {
-    if (selectedTags.includes(tag)) {
-      selectedTags = selectedTags.filter(selectedTag => selectedTag !== tag);
-    } else {
-      selectedTags.push(tag);
-    }
+  if (selectedTags.includes(tag)) {
+    selectedTags = selectedTags.filter(selectedTag => selectedTag !== tag);
+  } else if (tag) {
+    selectedTags.push(tag);
   }
 
   main.innerHTML = ''; // Clear the previous content.
 
-  for (const data of dataBase) {
+  for (const data of filteredData) {
     // Check if at least one tag is selected, then check the filters
     if (selectedTags.length === 0 || selectedTags.every(selectedTag => {
       return data.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(selectedTag.toLowerCase())) ||
@@ -175,4 +191,23 @@ function displayNumberOfRecipesFilteredByTags(filteredData) {
   } else {
     numberOfRecipes.innerText = `${filteredData.length} recettes`;
   }
+}
+
+// Search bar for tags
+async function researchTag(listId, inputId) {
+  const tagList = document.getElementById(listId);
+  const tagInput = document.getElementById(inputId);
+
+  tagInput.addEventListener('input', function() {
+    const userInput = tagInput.value.toLowerCase(); // Convert the input to lowercase for case-insensitive comparison
+
+    tagList.childNodes.forEach(tag => {
+      const tagText = tag.innerText.toLowerCase();
+      if (tagText.includes(userInput)) {
+        tag.style.display = 'block'; // Display the matching element
+      } else {
+        tag.style.display = 'none'; // Hide elements that don't match
+      }
+    });
+  });
 }

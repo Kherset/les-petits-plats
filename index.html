@@ -34,33 +34,32 @@
   <nav id="filter-items">
     <ul class="dropdown-list">
       <li class="dropdown-menu">
-        <span class="dropdown-menu-title" onclick="toggleList('ingredients-list')"><a href="#">Ingrédients </a><i class="fa-solid fa-chevron-down"></i></span>
-        <ul id="ingredients-list" class="dropdown-menu-choices">
-          <li class="dropdown-search"> <input type="text"><i class="fa-solid fa-magnifying-glass"></i></li>
+        <span class="dropdown-menu-title" onclick="toggleList('ingredients-list-container')"><a href="#">Ingrédients </a><i class="fa-solid fa-chevron-down"></i></span>
+        <ul id="ingredients-list-container" class="dropdown-menu-choices">
+          <li class="dropdown-search"> <input id="ingredients-input" class="dropdown-search-input" type="text"><i class="fa-solid fa-magnifying-glass"></i></li>
+          <ul id="ingredients-list"></ul>
         </ul>
       </li>
 
       <li class="dropdown-menu">
-        <span class="dropdown-menu-title" onclick="toggleList('appliances-list')" ><a href="#">Appareils </a><i class="fa-solid fa-chevron-down"></i></span>
-        <ul id="appliances-list" class="dropdown-menu-choices">
-          <li class="dropdown-search"> <input type="search"> <i class="fa-solid fa-magnifying-glass"></i> </li>
+        <span class="dropdown-menu-title" onclick="toggleList('appliances-list-container')" ><a href="#">Appareils </a><i class="fa-solid fa-chevron-down"></i></span>
+        <ul id="appliances-list-container" class="dropdown-menu-choices">
+          <li class="dropdown-search"> <input id="appliances-input" class="dropdown-search-input" type="search"> <i class="fa-solid fa-magnifying-glass"></i> </li>
+          <ul id="appliances-list"></ul>
         </ul>
       </li>
 
       <li class="dropdown-menu">
-        <span class="dropdown-menu-title" onclick="toggleList('utensils-list')"><a href="#">Ustensils </a><i class="fa-solid fa-chevron-down" ></i></span>
-        <ul id="utensils-list" class="dropdown-menu-choices">
-          <li class="dropdown-search"> <input type="text" value=""> <i class="fa-solid fa-magnifying-glass"></i> </li>
+        <span class="dropdown-menu-title" onclick="toggleList('utensils-list-container')"><a href="#">Ustensils </a><i class="fa-solid fa-chevron-down" ></i></span>
+        <ul id="utensils-list-container" class="dropdown-menu-choices">
+          <li class="dropdown-search"> <input id="utensils-input" class="dropdown-search-input" type="text"> <i class="fa-solid fa-magnifying-glass"></i> </li>
+          <ul id="utensils-list"></ul>
         </ul>
       </li>
     </ul>
     <h3 id="number-of-recipes">recettes</h3>
 
     <ul id="tags-list">
-
-
-
-
     </ul>
   </nav>
 
