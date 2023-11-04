@@ -6,6 +6,7 @@ const numberOfRecipes = document.getElementById('number-of-recipes');
 let recipes;
 let filteredData = [];
 let searchedName = '';
+let searchTextLength = 0;
 
 // Function to perform the search
 async function searchRecipe() {
@@ -31,7 +32,11 @@ function filterData(e) {
 
   searchedName = e.target.value.toLowerCase();
 
-  if (searchedName.length >= 3) {
+  if (searchedName.length >= 3 && searchedName.length > searchTextLength) {
+    filteredData = searchInsideRecipes(searchedName);
+    displayNumberOfRecipes(filteredData);
+  } else if (searchedName.length >= 3) {
+    filteredData = [...recipes];
     filteredData = searchInsideRecipes(searchedName);
     displayNumberOfRecipes(filteredData);
   } else {
@@ -43,6 +48,7 @@ function filterData(e) {
   if (selectedTags.length > 0) {
     filterDataByTags();
   }
+  searchTextLength = searchedName.length;
 }
 
 // Search for keywords inside recipes
